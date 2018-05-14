@@ -19,7 +19,21 @@ class imagesLinks {
             'http://localhost:3000/img/arts/mona-lisa.jpg',
             'http://localhost:3000/img/arts/goya-swing.jpg',
             'http://localhost:3000/img/arts/monet-sunflower.jpg',
-            'http://localhost:3000/img/arts/venus-de-milo.jpg'
+            'http://localhost:3000/img/arts/venus-de-milo.jpg',
+            'http://localhost:3000/img/arts/bartolini-dirce.jpg',
+            'http://localhost:3000/img/arts/benua-kingswalk.jpg',
+            'http://localhost:3000/img/arts/bernini-basiliquestpierre.jpg',
+            'http://localhost:3000/img/arts/bradley-expansion.jpg',
+            'http://localhost:3000/img/arts/cox-peacock.jpg',
+            'http://localhost:3000/img/arts/dali-thepersistanceofmemory.jpg',
+            'http://localhost:3000/img/arts/vangoch-starnight.jpg',
+            'http://localhost:3000/img/arts/michaelangello-adamscreation.jpg',
+            'http://localhost:3000/img/arts/michaelangello-pieta.jpg',
+            'http://localhost:3000/img/arts/picasso-firstcommunion.jpg',
+            'http://localhost:3000/img/arts/rembrandt-nightwatch.jpg',
+            'http://localhost:3000/img/arts/shishkin-oaks.jpg',
+            'http://localhost:3000/img/arts/unknown-nika.jpg',
+            'http://localhost:3000/img/arts/lol-gingercat.jpg',
         ];
 
         this.headers = new Headers();
@@ -65,16 +79,32 @@ images.clearLinks();
 //view
 
 class controlButtonsRender {
-    constructor(element) {
+    constructor(element,backgrounds) {
         this.element = element;
+        this.backgrounds = [
+            'img/background/space0.jpg',
+            'img/background/space1.jpg',
+            'img/background/space2.jpg',
+            'img/background/space3.jpg',
+            'img/background/space4.jpg',
+            'img/background/space5.jpg',
+            'img/background/space6.jpg',
+            'img/background/space7.jpg',
+            'img/background/space8.jpg',
+            'img/background/space9.jpg',
+        ];
     }
 
     render() {
+         const bgLink = this.backgrounds[Math.floor(Math.random() * (9 - 0 + 1)) + 0];
+         document.body.style.cssText = `background-image:url(${bgLink})`;
+         
+
         this.element.insertAdjacentHTML('afterbegin',
             '<h1 class="header--text">Find a pair!</h1>\
       <p class="description--text">Choose difficulty level by clicking button below.</p>\
      <br>\
-     <button class="control--button">4x4</button> <button class="control--button">5x5</button> <button class="control--button">6x6</button>'
+     <button class="control--button  button__4">4x4</button> <button class="control--button  button__5">5x5</button> <button class="control--button  button__6">6x6</button>'
         );
     }
 
@@ -119,13 +149,45 @@ class tableRender {
     }
 
     _imageRender() {
+
           let cells = document.querySelectorAll('.cell');
+          const random =  this._randomizer(cells);
          
-         for( let cell of cells){
-            let random = Math.floor(0 + Math.random() * (3 + 1 - 0));
-            let glink = sessionStorage.getItem(`link-${random}`);
-            cell.insertAdjacentHTML('afterbegin',`<img class="image" width="200px" height = "200px" src=${glink}></img>`);
+         for( let i = 0; i<cells.length;i++){
+
+            if(cells.length === 25 && i === 12){
+                cells[12].style.visibility = 'hidden';    
+                continue;
+            }
+            let glink = sessionStorage.getItem(`link-${random[i]}`);
+            cells[i].insertAdjacentHTML('afterbegin',`<img class="image"  src=${glink}></img> <div class = "choke"></div>`);
+            
          }
+
+         cells[24].firstElementChild.src = sessionStorage.getItem(`link-${random[12]}`);
+        
+    }
+
+
+    _randomizer(cells){
+    
+        this.cells = cells;
+
+        const arr = [];
+        for(let c = 0; c<cells.length/2;c++ ){
+           arr.push(c);
+           arr.push(c);
+        }
+
+        if(cells.length == 25){
+            arr.pop();
+            arr.pop();
+        }
+
+        return arr.sort(()=>{
+               return 0.5-Math.random();
+        });
+        
     }
 
 }
@@ -158,4 +220,4 @@ let bc = new ButtonController(document.querySelector('.control--container'));
 
 
 
-//cell controller, chokes render , running-line controller , running-line-render, score render , score controller 
+//cell controller,  , running-line controller , running-line-render, score render , score controller 
