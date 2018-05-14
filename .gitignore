@@ -1,6 +1,6 @@
 # ART-in-Space
 
-
-../node-modules
-*min.js
-../css
+node-modules/
+build/
+.pdf
+.psd
