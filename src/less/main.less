@@ -1,0 +1,80 @@
+body{   
+    text-align: center;
+    position: relative;
+}
+
+
+.header--text,.description--text{
+    color:@basecolor;
+    font-size: 1.5rem;
+    font-family: @basefont;
+}
+
+.control--button{
+    width:100px;
+    height: 40px;
+    font-size: 1.5rem;
+    font-family: @basefont;
+    color:@basecolor;
+    border: 1.5px solid darken(@basecolor,10);
+    background-color: transparent;
+    margin-left:1rem;
+}
+
+#running--line{
+    position: absolute;
+    font-family: @basefont;
+    color: @basecolor;
+    font-size:80px;
+}
+
+.score{
+   
+    text-align: start;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 1.5rem;
+    color:@basecolor;
+    font-family: @basefont;
+    transform:translate(50px,50px); 
+      
+}
+
+.turns{
+    font-size: 2.3rem;
+    border: 2px solid @basecolor;
+    color:darken(@basecolor,5);
+    
+}
+
+.game--container{
+
+    & table {
+
+    & td{
+
+           border:1.5px solid lighten(@basecolor,10);
+           position: relative;
+        
+           & .choke{
+            color:lighten(@basecolor,50);
+            background-image: url('../img/chokebg.jpg');        
+            display: block;
+            position: absolute;
+            left:-1px;
+            top:-1px;
+            border-radius:5px;
+            z-index: 100;
+            border:3px solid rgb(255, 0, 0);
+        
+        }
+       
+           & .image{
+               margin-bottom: -5px;
+           }
+    }
+}
+}
+
+
+
