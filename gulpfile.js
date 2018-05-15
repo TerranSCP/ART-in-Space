@@ -44,10 +44,10 @@ gulp.task('eslint', () => {
 gulp.task('js', () => {
     gulp.src("./src/js/index.js")
     
-      // .pipe(babel({
-        //   presets: ['env']  //настрой после финальной компиляции ,не забудь
-       // })) //транспиляция
-        //.pipe(uglify()) //сжать
+      .pipe(babel({
+           presets: ['env']  
+        })) 
+        .pipe(uglify()) //сжать
         .pipe(gulp.dest("./build/js"))
 
 });
@@ -93,8 +93,8 @@ gulp.task("html", () => {
 gulp.task("./", done => {
     run(
         "style",
-      //  "eslint",    
-       // "js",
+      "eslint",    
+        "js",
         "html",
         "images",
         done
