@@ -96,6 +96,7 @@ class controlButtonsRender {
     }
 
     render() {
+
          const bgLink = this.backgrounds[Math.floor(Math.random() * (9 - 0 + 1)) + 0];
          document.body.style.cssText = `background-image:url(${bgLink})`;
          
@@ -165,6 +166,7 @@ class tableRender {
          }
 
          cells[24].firstElementChild.src = sessionStorage.getItem(`link-${random[12]}`);
+         this._initializeCells();
         
     }
 
@@ -190,6 +192,10 @@ class tableRender {
         
     }
 
+    _initializeCells(){
+        const init = new cellController._event();
+    }
+
 }
 
 
@@ -208,8 +214,6 @@ class ButtonController {
         if (event.target.tagName == "BUTTON") {
             let tablerun = new tableRender(document.querySelector('.game--container')).render(event.target); // запускает рендер таблицы
             
-
-
         }
 
     }
@@ -217,6 +221,20 @@ class ButtonController {
 
 
 let bc = new ButtonController(document.querySelector('.control--container'));
+
+
+class cellController {
+    
+    constructor(){
+
+    }
+  
+    _event(){
+       const table = document.querySelector()
+    }
+
+
+}
 
 
 
