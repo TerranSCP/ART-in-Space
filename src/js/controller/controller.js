@@ -1,7 +1,7 @@
 //controller
 
 
-class ButtonController {
+ class ButtonController {
     constructor(elem, click) {
         this.elem = elem;
         this.click = this.click.bind(this);
@@ -22,7 +22,7 @@ class ButtonController {
 let bc = new ButtonController(document.querySelector('.control--container'));
 
 
-class cellController {
+ class cellController {
 
     constructor() {
 
@@ -121,7 +121,7 @@ class cellController {
 
 }
 
-class runningLineController {
+ class runningLineController {
 
     constructor() {
 

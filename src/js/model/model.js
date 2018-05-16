@@ -2,7 +2,7 @@
 
 
 
-class imagesLinks {
+ class imagesLinks {
 
     constructor(options, headers, pictures,path) {
 

@@ -10,9 +10,8 @@ const imagemin = require("gulp-imagemin");
 const pump = require("pump");
 const rename = require("gulp-rename");
 const run = require("run-sequence");
-const uglify = require("gulp-uglify");
-const babel = require('gulp-babel');
-const eslint = require('eslint');
+const concat = require('gulp-concat');
+const minify = require('gulp-minify');
 
 //Автопрефиксер и минификация
 
@@ -31,26 +30,30 @@ gulp.task("style", () => {
 
 });
 
-//eslint for js 
-gulp.task('eslint', () => {
-    gulp.src(["src/js/*.js", "!src/js/*.min.js", "!gulpfile.js"])
-        .pipe(eslint())
-        .pipe(eslint.format())
-        .pipe(eslint.failAfterError())
-});
+ 
+gulp.task('jsc',()=>{
+
+    return gulp.src(['./src/js/model/model.js', './src/js/view/view.js', './src/js/controller/controller.js'])
+    .pipe(concat('index.js'))
+    .pipe(gulp.dest('./src/js/'))
+
+})
 
 
-//траспиляция + Минификация JS 
-gulp.task('js', () => {
-    gulp.src("./src/js/index.js")
-    
-      .pipe(babel({
-           presets: ['env']  
-        })) 
-        .pipe(uglify()) //сжать
-        .pipe(gulp.dest("./build/js"))
 
-});
+// Минификация JS 
+
+gulp.task('jsm', function() {
+    gulp.src('./src/js/index.js')
+      .pipe(minify({
+          ext:{
+              src:'.js',
+              min:'-min.js'
+          },
+      }))
+      .pipe(gulp.dest('./build/js'))
+  });
+
 
 //Оптимизация изображений
 gulp.task('images', () =>
@@ -93,10 +96,10 @@ gulp.task("html", () => {
 gulp.task("./", done => {
     run(
         "style",
-      "eslint",    
-        "js",
         "html",
         "images",
+        "jsc",
+        "jst",
         done
     );
 });
@@ -114,8 +117,8 @@ gulp.task('serve', () => {
 
 
     gulp.watch("src/less/**/*.less", ["style"]).on("change", server.reload);
-    gulp.watch("src/js/**/*.js", ["js"]).on("change",server.reload);  
     gulp.watch("src/*.html", ["html"]).on("change", server.reload);
+   
 
 });
 

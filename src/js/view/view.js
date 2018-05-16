@@ -1,6 +1,7 @@
 //view
 
-class controlButtonsRender {
+
+ class controlButtonsRender {
     constructor(element, backgrounds) {
 
         this.element = element;
@@ -41,7 +42,7 @@ class controlButtonsRender {
 }
 
 
-class scoreRender {
+  class scoreRender {
 
     constructor() {
 
@@ -62,7 +63,7 @@ buttons.render();
 
 //запуск вот этого рендера производит контроллер (строит таблицу)
 
-class tableRender {
+  class tableRender {
     constructor(gcontainer) {
         this.gcontainer = gcontainer;
     }
@@ -148,7 +149,7 @@ class tableRender {
 
 }
 
-class runningLineRender {
+ class runningLineRender {
     constructor() {
 
     }
