@@ -1,2 +1,5 @@
 # ART-in-Space
-Simple logical game for memory training.
+Own interpretation of popular game named Memory.
+
+Tech. Stack used :
+vanilla.js , es6 , async/await , MVC pattern , less , gulp
