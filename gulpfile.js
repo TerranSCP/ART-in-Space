@@ -43,7 +43,7 @@ gulp.task('jsc',()=>{
 
 // Минификация JS 
 
-gulp.task('jsm', function() {
+gulp.task('jsm', () => {
     gulp.src('./src/js/index.js')
       .pipe(minify({
           ext:{
@@ -108,7 +108,7 @@ gulp.task("./", done => {
 gulp.task('serve', () => {
     server.init({
    
-        server: "./build",
+        server: "./",
         notify: false,
         open: false,
         cors: false,
