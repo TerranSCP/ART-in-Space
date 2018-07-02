@@ -7,7 +7,7 @@
     constructor(options, headers, pictures,path) {
 
 
-        this.path = 'https://artinspace.herokuapp.com/';
+        this.path = 'https://terranscp.github.io';
 
 
 
@@ -73,16 +73,16 @@ let images = new imagesLinks().getLinks();
 
         this.element = element;
         this.backgrounds = [
-            'img/background/space0.jpg',
-            'img/background/space1.jpg',
-            'img/background/space2.jpg',
-            'img/background/space3.jpg',
-            'img/background/space4.jpg',
-            'img/background/space5.jpg',
-            'img/background/space6.jpg',
-            'img/background/space7.jpg',
-            'img/background/space8.jpg',
-            'img/background/space9.jpg',
+            'src/img/background/space0.jpg',
+            'src/img/background/space1.jpg',
+            'src/img/background/space2.jpg',
+            'src/img/background/space3.jpg',
+            'src/img/background/space4.jpg',
+            'src/img/background/space5.jpg',
+            'src/img/background/space6.jpg',
+            'src/img/background/space7.jpg',
+            'src/img/background/space8.jpg',
+            'src/img/background/space9.jpg',
         ];
     }
 
